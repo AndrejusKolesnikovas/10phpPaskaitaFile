@@ -79,7 +79,7 @@ function exercise3(): array
 
     return array_filter(explode(PHP_EOL, $content));
 }
-print_r(exercise3());
+//print_r(exercise3());
 
 /*
     Užduotis: 4
@@ -98,6 +98,7 @@ print_r(exercise3());
 
     Event 'birthday' is 97 days away
 */
+
 
 function exercise5(): void
 {
@@ -137,16 +138,21 @@ function exercise5(): void
             'weight' => 1450
         ],
     ];
+    $serializedData = json_encode($vehicles,JSON_PRETTY_PRINT);
+ file_put_contents('./vehicles_database.json',$serializedData);
 }
+//exercise5();
 
 function exercise6(): array
 {
     /*
     Perskaitykite failo vehicles_database.json turinį, paverskite jį į masyvą ir grąžinkite iš funkcijos.
     */
+    $data = file_get_contents('./vehicles_database.json');
 
-    return [];
+    return json_decode($data,true);
 }
+//print_r(exercise6());
 
 function exercise7(): array
 {
@@ -165,6 +171,13 @@ function exercise7(): array
     - į masyvą pridėkite naują elementą ($newVehicle)
     - vėl išsaugokite visą masyvą faile vehicles_database.json
     */
+    $data = file_get_contents('./vehicles_database.json');
 
-    return [];
+    $deserializedData =  json_decode($data,true);
+    $deserializedData[]= $newVehicle;
+    $serializedData = json_encode($deserializedData,JSON_PRETTY_PRINT);
+
+    file_put_contents('./vehicles_database.json',$serializedData);
+    return $deserializedData;
 }
+print_r(exercise7());
