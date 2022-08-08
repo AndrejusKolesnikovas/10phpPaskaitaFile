@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-echo 'Please enter:'.PHP_EOL;
+echo 'Please enter:' . PHP_EOL;
 
 $name = readline('Event name:');
 $data = readline('Event date (YYYY-MM-DD):');
 
 $dataNow = new DateTime('now');
 
-$dataInterval =$dataNow ->diff(targetObject: new DateTime(datetime: $data));
+$dataInterval = $dataNow->diff(new DateTime($data));
 
 $dataFormat = $dataInterval->format('%R%a days');
 
-echo  'Event '.$name.' is '.$dataFormat.' days away';
+echo 'Event ' . $name . ' is ' . $dataFormat . ' days away';

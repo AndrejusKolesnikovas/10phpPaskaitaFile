@@ -10,11 +10,12 @@ function exercise1(): void
     Kiekvienas skaičius turi būti įrašytas naujoje eilutėje.
     */
 
-    for ($i=0;$i<=10;++$i){
-        $content = $i.PHP_EOL;
-        file_put_contents('./test.txt',$content,FILE_APPEND);
+    for ($i = 0; $i <= 10; ++$i) {
+        $content = $i . PHP_EOL;
+        file_put_contents('./test.txt', $content, FILE_APPEND);
     }
 }
+
 //exercise1();
 
 function exercise2(): void
@@ -57,11 +58,12 @@ function exercise2(): void
         ],
     ];
 
-    foreach ($vehicles as $vehicle){
-        $content = $vehicle['name'].PHP_EOL;
-        file_put_contents('./vehicles.txt',$content,FILE_APPEND);
+    foreach ($vehicles as $vehicle) {
+        $content = $vehicle['name'] . PHP_EOL;
+        file_put_contents('./vehicles.txt', $content, FILE_APPEND);
     }
 }
+
 //exercise2();
 
 function exercise3(): array
@@ -79,6 +81,7 @@ function exercise3(): array
 
     return array_filter(explode(PHP_EOL, $content));
 }
+
 //print_r(exercise3());
 
 /*
@@ -138,9 +141,10 @@ function exercise5(): void
             'weight' => 1450
         ],
     ];
-    $serializedData = json_encode($vehicles,JSON_PRETTY_PRINT);
- file_put_contents('./vehicles_database.json',$serializedData);
+    $serializedData = json_encode($vehicles, JSON_PRETTY_PRINT);
+    file_put_contents('./vehicles_database.json', $serializedData);
 }
+
 //exercise5();
 
 function exercise6(): array
@@ -150,8 +154,9 @@ function exercise6(): array
     */
     $data = file_get_contents('./vehicles_database.json');
 
-    return json_decode($data,true);
+    return json_decode($data, true);
 }
+
 //print_r(exercise6());
 
 function exercise7(): array
@@ -173,11 +178,12 @@ function exercise7(): array
     */
     $data = file_get_contents('./vehicles_database.json');
 
-    $deserializedData =  json_decode($data,true);
-    $deserializedData[]= $newVehicle;
-    $serializedData = json_encode($deserializedData,JSON_PRETTY_PRINT);
+    $deserializedData = json_decode($data, true);
+    $deserializedData[] = $newVehicle;
+    $serializedData = json_encode($deserializedData, JSON_PRETTY_PRINT);
 
-    file_put_contents('./vehicles_database.json',$serializedData);
+    file_put_contents('./vehicles_database.json', $serializedData);
     return $deserializedData;
 }
+
 print_r(exercise7());
