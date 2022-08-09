@@ -139,12 +139,21 @@ if ($operationType === 'add') {
 } elseif ($operationType === 'show_one') {
     $enterID = (int)readline('Please enter ID of the vehicle:');
 
-    echo 'type: ' . $data[$enterID]['type'] . PHP_EOL .
-        'name: ' . $data[$enterID]['name'] . PHP_EOL .
-        'weight: ' . $data[$enterID]['weight'] . PHP_EOL .
-        '--------' . PHP_EOL;
-
+    if (isset($data[$enterID])) {
+        showDataOne($enterID, $data[0]);
+    } else {
+        echo 'Vehicle ' . $enterID . ' does not exist!';
+    }
 
 } elseif ($operationType === 'delete_one') {
+    $enterID = (int)readline('Please enter ID of the vehicle to delete:');
 
+    if (isset($data[$enterID])) {
+        unset($data[$enterID]);
+        writeJsonDataToFile('./vehicles_database.json', $data);
+
+        echo 'Vehicle ' . $enterID . ' deleted!';
+    } else {
+        echo 'Vehicle ' . $enterID . ' does not exist!';
+    }
 }
