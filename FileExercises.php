@@ -180,10 +180,10 @@ function exercise7(): array
 
     $deserializedData = json_decode($data, true);
     $deserializedData[] = $newVehicle;
-    $serializedData = json_encode($deserializedData, JSON_PRETTY_PRINT);
+    $serializedData = json_encode($deserializedData, JSON_PRETTY_PRINT|JSON_FORCE_OBJECT);
 
     file_put_contents('./vehicles_database.json', $serializedData);
     return $deserializedData;
 }
 
-print_r(exercise7());
+//print_r(exercise7());
